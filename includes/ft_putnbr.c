@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alaulom <anthonylaulom@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/19 14:55:44 by alaulom           #+#    #+#             */
-/*   Updated: 2014/11/25 16:54:36 by alaulom          ###   ########.fr       */
+/*   Created: 2014/11/10 18:42:52 by alaulom           #+#    #+#             */
+/*   Updated: 2014/11/10 18:43:01 by alaulom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
-int			get_next_line(int const fd, char **line)
+void		ft_putnbr(int nb)
 {
-	static char		*mem;
-	char			*str;
-	char			buffer[BUFF_SIZE];
-	int				ret;
-
-	if (!fd || !line || !(*line) || !BUFF_SIZE <= 0)
-		return (-1);
-	if (mem)
-		str = ft_strdup(mem);
-
+	if (nb < 0)
+	{
+		ft_putchar('-');
+		ft_putnbr(-nb);
+	}
+	else if (nb < 10)
+		ft_putchar(nb + '0');
+	else
+	{
+		ft_putnbr(nb / 10);
+		ft_putchar(nb % 10 + '0');
+	}
 }

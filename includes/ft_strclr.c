@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   ft_strclr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alaulom <anthonylaulom@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/19 14:55:44 by alaulom           #+#    #+#             */
-/*   Updated: 2014/11/25 16:54:36 by alaulom          ###   ########.fr       */
+/*   Created: 2014/11/11 15:35:15 by alaulom           #+#    #+#             */
+/*   Updated: 2014/11/17 17:17:58 by alaulom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
-
-int			get_next_line(int const fd, char **line)
+void		ft_strclr(char *s)
 {
-	static char		*mem;
-	char			*str;
-	char			buffer[BUFF_SIZE];
-	int				ret;
-
-	if (!fd || !line || !(*line) || !BUFF_SIZE <= 0)
-		return (-1);
-	if (mem)
-		str = ft_strdup(mem);
-
+	if (s)
+		while (*s)
+			*s++ = 0;
 }

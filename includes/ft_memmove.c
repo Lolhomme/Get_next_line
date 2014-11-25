@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alaulom <anthonylaulom@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/19 14:55:44 by alaulom           #+#    #+#             */
-/*   Updated: 2014/11/25 16:54:36 by alaulom          ###   ########.fr       */
+/*   Created: 2014/11/08 15:28:32 by alaulom           #+#    #+#             */
+/*   Updated: 2014/11/14 16:48:25 by alaulom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
-int			get_next_line(int const fd, char **line)
+void		*ft_memmove(void *dst, const void *src, size_t len)
 {
-	static char		*mem;
-	char			*str;
-	char			buffer[BUFF_SIZE];
-	int				ret;
+	unsigned char			*ptrdst;
+	const unsigned char		*ptrsrc;
 
-	if (!fd || !line || !(*line) || !BUFF_SIZE <= 0)
-		return (-1);
-	if (mem)
-		str = ft_strdup(mem);
-
+	if (!len)
+		return (dst);
+	ptrdst = (unsigned char *)dst;
+	ptrsrc = (const unsigned char *)src;
+	if (ptrsrc < ptrdst)
+	{
+		ptrdst += len;
+		ptrsrc += len;
+		while (len--)
+			*--ptrdst = *--ptrsrc;
+	}
+	else
+		while (len--)
+			*ptrdst++ = *ptrsrc++;
+	return (dst);
 }

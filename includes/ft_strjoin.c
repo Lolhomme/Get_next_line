@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alaulom <anthonylaulom@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/19 14:55:44 by alaulom           #+#    #+#             */
-/*   Updated: 2014/11/25 16:54:36 by alaulom          ###   ########.fr       */
+/*   Created: 2014/11/12 17:00:24 by alaulom           #+#    #+#             */
+/*   Updated: 2014/11/17 15:18:07 by alaulom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
-int			get_next_line(int const fd, char **line)
+char		*ft_strjoin(const char *s1, const char *s2)
 {
-	static char		*mem;
-	char			*str;
-	char			buffer[BUFF_SIZE];
-	int				ret;
+	char	*str;
+	char	*ret;
 
-	if (!fd || !line || !(*line) || !BUFF_SIZE <= 0)
-		return (-1);
-	if (mem)
-		str = ft_strdup(mem);
-
+	if (!s1 || !s2)
+		return (NULL);
+	str = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	ret = str;
+	while (*s1)
+		*str++ = *s1++;
+	while (*s2)
+		*str++ = *s2++;
+	*str = 0;
+	return (ret);
 }

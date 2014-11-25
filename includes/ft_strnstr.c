@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alaulom <anthonylaulom@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/19 14:55:44 by alaulom           #+#    #+#             */
-/*   Updated: 2014/11/25 16:54:36 by alaulom          ###   ########.fr       */
+/*   Created: 2014/11/07 14:55:56 by alaulom           #+#    #+#             */
+/*   Updated: 2014/11/17 16:16:36 by alaulom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
-int			get_next_line(int const fd, char **line)
+char			*ft_strnstr(const char *s1, const char *s2, size_t n)
 {
-	static char		*mem;
-	char			*str;
-	char			buffer[BUFF_SIZE];
-	int				ret;
+	size_t		len_s2;
 
-	if (!fd || !line || !(*line) || !BUFF_SIZE <= 0)
-		return (-1);
-	if (mem)
-		str = ft_strdup(mem);
-
+	len_s2 = ft_strlen(s2);
+	if (!*s2)
+		return ((char*)s1);
+	while (*s1 && len_s2 <= n--)
+	{
+		if (!ft_memcmp(s1++, s2, len_s2))
+			return ((char*)s1 - 1);
+	}
+	return (NULL);
 }

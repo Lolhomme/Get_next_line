@@ -1,27 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alaulom <anthonylaulom@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/19 14:55:44 by alaulom           #+#    #+#             */
-/*   Updated: 2014/11/25 16:54:36 by alaulom          ###   ########.fr       */
+/*   Created: 2014/11/11 17:38:54 by alaulom           #+#    #+#             */
+/*   Updated: 2014/11/11 18:12:34 by alaulom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
-int			get_next_line(int const fd, char **line)
+char		*ft_strmap(const char *s, char (*f)(char))
 {
-	static char		*mem;
-	char			*str;
-	char			buffer[BUFF_SIZE];
-	int				ret;
+	char	*str;
+	char	*ret;
 
-	if (!fd || !line || !(*line) || !BUFF_SIZE <= 0)
-		return (-1);
-	if (mem)
-		str = ft_strdup(mem);
-
+	if (s && f)
+	{
+		str = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
+		if (!str)
+			return (NULL);
+		ret = str;
+		while (*s)
+		{
+			*str = (*f)(*s);
+			str++;
+			s++;
+		}
+		*str = 0;
+		return (ret);
+	}
+	return (NULL);
 }

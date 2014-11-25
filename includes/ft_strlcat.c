@@ -1,27 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alaulom <anthonylaulom@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/19 14:55:44 by alaulom           #+#    #+#             */
-/*   Updated: 2014/11/25 16:54:36 by alaulom          ###   ########.fr       */
+/*   Created: 2014/11/07 11:04:42 by alaulom           #+#    #+#             */
+/*   Updated: 2014/11/07 11:35:34 by alaulom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
-int			get_next_line(int const fd, char **line)
+size_t ft_strlcat(char *dst, const char *src, size_t n)
 {
-	static char		*mem;
-	char			*str;
-	char			buffer[BUFF_SIZE];
-	int				ret;
+	size_t	i;
+	size_t	buff;
+	size_t	len2;
+	size_t	n_ori;
 
-	if (!fd || !line || !(*line) || !BUFF_SIZE <= 0)
-		return (-1);
-	if (mem)
-		str = ft_strdup(mem);
-
+	i = 0;
+	n_ori = n;
+	len2 = ft_strlen(src);
+	buff = ft_strlen(dst) + len2;
+	while (*dst && n)
+	{
+		n--;
+		dst++;
+	}
+	if (n == 0)
+		return (n_ori + len2);
+	while (src[i] && n-- > 1)
+		*dst++ = src[i++];
+	*dst = 0;
+	return (buff);
 }
