@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alaulom <anthonylaulom@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/19 15:38:23 by alaulom           #+#    #+#             */
-/*   Updated: 2014/12/16 13:23:33 by alaulom          ###   ########.fr       */
+/*   Created: 2014/11/08 11:36:23 by alaulom           #+#    #+#             */
+/*   Updated: 2014/11/14 12:32:14 by alaulom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# define BUFF_SIZE 10
+#include "libft.h"
 
-# include "libft/includes/libft.h"
-# include <unistd.h>
-# include <fcntl.h>
-# include <stdlib.h>
+void					*ft_memccpy(void *dst, const void *src, int c, size_t n)
+{
+	unsigned char			*ptrdst;
+	unsigned char			*ptrsrc;
+	unsigned char			cara;
 
-int			get_next_line(int const fd, char **line);
-
-#endif
+	if (!src || !dst)
+		return (NULL);
+	ptrdst = (unsigned char *)dst;
+	ptrsrc = (unsigned char *)src;
+	cara = (unsigned char)c;
+	while (n--)
+		if ((*ptrdst++ = *ptrsrc++) == cara)
+			return (ptrdst);
+	return (NULL);
+}

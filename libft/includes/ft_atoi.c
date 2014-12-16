@@ -1,24 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alaulom <anthonylaulom@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/19 15:38:23 by alaulom           #+#    #+#             */
-/*   Updated: 2014/12/16 13:23:33 by alaulom          ###   ########.fr       */
+/*   Created: 2014/11/10 11:46:01 by alaulom           #+#    #+#             */
+/*   Updated: 2014/11/17 11:04:48 by alaulom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# define BUFF_SIZE 10
+#include "libft.h"
 
-# include "libft/includes/libft.h"
-# include <unistd.h>
-# include <fcntl.h>
-# include <stdlib.h>
+int			ft_atoi(const char *str)
+{
+	int		ret;
+	char	sign;
 
-int			get_next_line(int const fd, char **line);
-
-#endif
+	sign = 1;
+	ret = 0;
+	while (ft_isspace(*str))
+		str++;
+	if (*str == '-' || *str == '+')
+	{
+		sign = (*str == '-' ? -1 : 1);
+		str++;
+	}
+	while (ft_isdigit (*str))
+	{
+		ret = ret * 10 + sign * (*str - '0');
+		str++;
+	}
+	return (ret);
+}
