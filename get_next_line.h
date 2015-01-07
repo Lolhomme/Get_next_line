@@ -11,8 +11,9 @@
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
+
 # define GET_NEXT_LINE_H
-# define BUFF_SIZE 10
+# define BUFF_SIZE 8
 
 # include "libft/includes/libft.h"
 # include <unistd.h>
