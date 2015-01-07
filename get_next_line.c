@@ -30,7 +30,7 @@ int		get_next_line(int const fd, char **line)
 		buff[ret] = 0;
 		mem = ft_strjoin(mem, buff);
 	}
-	if (ft_strchr(mem, '\n') || ((*line = strdup(mem)) && 0))
+	if (ft_strchr(mem, '\n') || ((*line = ft_strdup(mem)) && 0))
 		*line = ft_strsub(mem, 0, ft_strchr(mem, '\n') - mem + 1);
 	if (ret)
 		line[0][ft_strlen(*line) - 1] = 0;
