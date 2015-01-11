@@ -6,7 +6,7 @@
 /*   By: alaulom <anthonylaulom@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/04 12:58:21 by alaulom           #+#    #+#             */
-/*   Updated: 2014/11/04 15:21:51 by alaulom          ###   ########.fr       */
+/*   Updated: 2015/01/11 16:21:47 by alaulom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 size_t			ft_strlen(const char *s)
 {
 	size_t		a;
-
+	
+	if (!s)
+		return (0);
 	a = 0;
 	while (s[a])
 		a++;

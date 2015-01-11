@@ -6,7 +6,7 @@
 #    By: alaulom <anthonylaulom@gmail.com>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/17 09:44:19 by alaulom           #+#    #+#              #
-#    Updated: 2014/11/17 18:10:56 by alaulom          ###   ########.fr        #
+#    Updated: 2015/01/11 16:13:00 by alaulom          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ $(NAME): $(OBJ)
 	@echo "Libft compilee avec succes !"
 
 %.o: %.c
-	@$(CC) -I . -o $@ -c $? $(FLAGS)
+	@$(CC) -I includes/ -o $@ -c $? $(FLAGS)
 
 clean:
 	@rm -f $(OBJ)

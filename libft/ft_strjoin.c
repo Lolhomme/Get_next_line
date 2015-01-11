@@ -6,7 +6,7 @@
 /*   By: alaulom <anthonylaulom@gmail.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/12 17:00:24 by alaulom           #+#    #+#             */
-/*   Updated: 2014/11/17 15:18:07 by alaulom          ###   ########.fr       */
+/*   Updated: 2015/01/11 16:21:13 by alaulom          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,11 @@ char		*ft_strjoin(const char *s1, const char *s2)
 	char	*str;
 	char	*ret;
 
-	if (!s1 || !s2)
+	if (!s1 && s2)
+		return (ft_strdup(s2));
+	else if (s1 && !s2)
+		return (ft_strdup(s1));
+	else if (!s1)
 		return (NULL);
 	str = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	ret = str;
